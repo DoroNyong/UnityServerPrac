@@ -1,0 +1,95 @@
+# ==========================================
+# 1. Unity Project Ignores
+# ==========================================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+Recordings/
+
+# Asset store packages & crash reports
+AssetBundles/
+sysinfo.txt
+*.apk
+*.aab
+*.unitypackage
+*.app
+
+# Unity Auto-generated visual studio project files
+ExportedObj/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity source code generation
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Unity Crash Reports
+sysinfo.txt
+*.stackdump
+
+# ==========================================
+# 2. Server (Java / Gradle / Spring) Ignores
+# ==========================================
+HELP.md
+.gradle/
+**/build/
+!**/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### STS / Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+**/bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
+
+### NetBeans ###
+**/nbproject/private/
+**/nbbuild/
+**/dist/
+**/nbdist/
+**/.nb-gradle/
+
+# ==========================================
+# 3. Common IDE & Editors (IntelliJ, VS Code, OS)
+# ==========================================
+.idea/
+*.iws
+*.iml
+*.ipr
+**/out/
+!**/src/main/**/out/
+!**/src/test/**/out/
+
+.vscode/
+
+# OS Specific
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
