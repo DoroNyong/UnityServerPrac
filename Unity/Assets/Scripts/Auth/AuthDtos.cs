@@ -14,6 +14,7 @@ public class AuthResponse
 {
     public long memberId;
     public string username;
+    public string accessToken; // 로그인 응답에만 포함 (회원가입 응답에는 없음)
     public string message;
 }
 

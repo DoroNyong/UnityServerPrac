@@ -13,9 +13,6 @@ public class AuthNetworkManager : MonoBehaviour
     private const string SignupPath = "/api/members/signup";
     private const string LoginPath = "/api/members/login";
 
-    // 로그인 성공 후 다른 시스템에서 참조할 수 있도록 보관
-    public AuthResponse CurrentMember { get; private set; }
-
     public void Signup(string username, string password, Action<AuthResult> onDone)
     {
         StartCoroutine(Post(SignupPath, username, password, onDone));
@@ -25,7 +22,18 @@ public class AuthNetworkManager : MonoBehaviour
     {
         StartCoroutine(Post(LoginPath, username, password, result =>
         {
-            if (result.success) CurrentMember = result.data;
+            if (result.success)
+            {
+                if (result.data != null && !string.IsNullOrEmpty(result.data.accessToken))
+                {
+                    AuthSession.SetSession(result.data.memberId, result.data.username, result.data.accessToken);
+                }
+                else
+                {
+                    result.success = false;
+                    result.message = "로그인 응답에 accessToken이 없습니다.";
+                }
+            }
             onDone?.Invoke(result);
         }));
     }

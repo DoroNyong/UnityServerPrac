@@ -73,7 +73,17 @@ public class AuthUIController : MonoBehaviour
     private void OnResult(AuthResult result)
     {
         SetBusy(false);
-        SetStatus(result.message, result.success ? successColor : errorColor);
+
+        string message = result.message;
+        // 로그인 성공 시 세션에 저장된 토큰 앞자리를 표시해 저장 여부를 눈으로 확인
+        if (result.success && AuthSession.IsAuthenticated && result.data != null
+            && result.data.accessToken == AuthSession.AccessToken)
+        {
+            message += $"\n토큰 획득: {AuthSession.TokenPreview()}";
+            Debug.Log($"[Auth] 세션 저장 완료 - memberId={AuthSession.MemberId}, username={AuthSession.Username}, token={AuthSession.TokenPreview()}");
+        }
+
+        SetStatus(message, result.success ? successColor : errorColor);
     }
 
     private void SetBusy(bool busy)
