@@ -1,5 +1,6 @@
-package com.server.domain.player.entity;
+package com.server.domain.regi.player.entity;
 
+import com.server.domain.regi.member.entity.Member;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,6 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class Player {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -20,8 +22,16 @@ public class Player {
 	private int level;
 	private int gold;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "member_id", nullable = false)
+	private Member member;
+
 	public void updateScore(int level, int gold) {
 		this.level = level;
 		this.gold = gold;
+	}
+
+	public void assignMember(Member member) {
+		this.member = member;
 	}
 }
