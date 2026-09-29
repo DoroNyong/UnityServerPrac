@@ -48,4 +48,15 @@ public class MemberDto {
 		private String username;
 		private String message;
 	}
+
+	@Getter
+	@NoArgsConstructor
+	@AllArgsConstructor
+	@Builder
+	public static  class AuthResult {
+		private Long memberId;
+		private String username;
+		private String accessToken;
+		private String message;
+	}
 }
